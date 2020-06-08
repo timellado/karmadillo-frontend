@@ -9,11 +9,13 @@ export default class UserService {
 
     static baseURL() {return 'http://localhost:3000/auth'; }
 
-    static register(user, pass) {
+    static register(user, pass, email, birthDate) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/register`, {
                 username: user,
-                password: pass
+                password: pass,
+                email: email,
+                birth: birthDate
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
