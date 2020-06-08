@@ -24,7 +24,7 @@ export default class Page extends React.Component {
 
     render() {
         return (
-            <section>
+            <section style={{ marginTop: "70px" }}>
                 <Header title={this.state.title} />
                 {this.props.children}
                 <Footer />
