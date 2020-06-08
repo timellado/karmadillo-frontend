@@ -4,8 +4,8 @@ import React from 'react';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
 import { MovieListView } from './views/MovieListView';
-import { MovieDetailView }   from './views/MovieDetailView';
-import { MovieFormView }   from './views/MovieFormView';
+import { MovieDetailView } from './views/MovieDetailView';
+import { MovieFormView } from './views/MovieFormView';
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 
@@ -18,40 +18,46 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            title: 'Movie Example App',
+            title: 'Karmadillo',
             routes: [
-                { component: MovieListView , path: '/', exact: true},
-                { component: MovieDetailView , path: '/show/:id'},
-                { render: (props) => {
-                        if(UserService.isAuthenticated()) {
-                            return (<MovieFormView {... props} />)
+                { component: MovieListView, path: '/', exact: true },
+                { component: MovieDetailView, path: '/show/:id' },
+                {
+                    render: (props) => {
+                        if (UserService.isAuthenticated()) {
+                            return (<MovieFormView {...props} />)
                         }
                         else {
-                            return (<Redirect to={'/login'}/>)
-                        }} , path: '/edit/:id'},
-                { render: (props) => {
-                    if(UserService.isAuthenticated()) {
-                        return (<MovieFormView {... props} />)
-                    }
-                    else {
-                        return (<Redirect to={'/login'}/>)
-                    }}, path: '/add',},
-                { component: UserLoginView, path: '/login'},
-                { component: UserSignupView, path: '/register'}
+                            return (<Redirect to={'/login'} />)
+                        }
+                    }, path: '/edit/:id'
+                },
+                {
+                    render: (props) => {
+                        if (UserService.isAuthenticated()) {
+                            return (<MovieFormView {...props} />)
+                        }
+                        else {
+                            return (<Redirect to={'/login'} />)
+                        }
+                    }, path: '/add',
+                },
+                { component: UserLoginView, path: '/login' },
+                { component: UserSignupView, path: '/register' }
             ]
         };
     }
 
-    componentDidMount(){
+    componentDidMount() {
         document.title = this.state.title;
     }
 
     render() {
-        return(
+        return (
             <div>
                 <Router>
                     <Switch>
-                        {this.state.routes.map((route, i) => (<Route key={i} {...route}/>) )}
+                        {this.state.routes.map((route, i) => (<Route key={i} {...route} />))}
                     </Switch>
                 </Router>
             </div>
