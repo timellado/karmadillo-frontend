@@ -1,19 +1,21 @@
 "use strict";
 
 import React from 'react';
-import { Toolbar, Button, Avatar } from 'react-md';
+import { Toolbar, Button, Avatar, FontIcon, Chip } from 'react-md';
 import { withRouter } from 'react-router-dom'
+
+import UserService from '../services/UserService';
 
 import KebabMenu from './KebabMenu';
 import logo from '../css/images/karmadilloIcon.png';
-
-console.log(logo);
-
 
 class Header extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            user: UserService.isAuthenticated() ? UserService.getCurrentUser() : undefined
+        }
     }
 
     render() {
@@ -22,6 +24,9 @@ class Header extends React.Component {
                 colored
                 nav={<Button onClick={() => this.props.history.push('/')}><img src={logo} alt="Logo" width={50} /></Button>}
                 title={this.props.title}
+                children={this.state.user ? [<Button  onClick={() => this.props.history.push('/')} flat secondary iconChildren="account_circle" style={{ marginLeft: "890px" }}>{this.state.user.username}</Button>
+                ] : []}
+                fixed={true}
                 actions={<KebabMenu id="toolbar-colored-kebab-menu" />}>
             </Toolbar>
         );
