@@ -1,21 +1,21 @@
 "use strict";
 
 
-const webpack            = require('webpack');
-const path               = require('path');
-const ExtractTextPlugin  = require("extract-text-webpack-plugin");
-const HtmlWebpackPlugin  = require('html-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 
 module.exports = {
     entry: {
-        'vendor': ['react','react-dom','react-router-dom', 'babel-polyfill'],
-        'app': path.resolve(__dirname,'src/index.js')
+        'vendor': ['react', 'react-dom', 'react-router-dom', 'babel-polyfill'],
+        'app': path.resolve(__dirname, 'src/index.js')
     },
     output: {
-        path: path.resolve(__dirname,'dist'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'scripts/[name].js'
     },
     module: {
@@ -32,7 +32,7 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: [ {
+                use: [{
                     loader: 'html-loader',
                     options: {
                         minimize: true,
@@ -47,13 +47,17 @@ module.exports = {
                     fallback: "style-loader",
                     use: "css-loader"
                 })
+            },
+            {
+                test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+                loader: 'url-loader?limit=100000'
             }
 
         ]
     },
     plugins: [
         new CleanWebpackPlugin(['dist']),
-        new webpack.optimize.CommonsChunkPlugin({name: "vendor", minChunks: Infinity,}),
+        new webpack.optimize.CommonsChunkPlugin({ name: "vendor", minChunks: Infinity, }),
         new HtmlWebpackPlugin({
             template: './src/index.html',
             filename: 'index.html',
