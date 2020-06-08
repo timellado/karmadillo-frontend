@@ -18,11 +18,14 @@ class UserSignup extends React.Component {
 
         this.state = {
             username : '',
-            password : ''
+            password : '',
+            email: ''
         };
 
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
+        this.handleChangeEmail = this.handleChangeEmail.bind(this);
+
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -35,12 +38,17 @@ class UserSignup extends React.Component {
         this.setState(Object.assign({}, this.state, {password: value}));
     }
 
+    handleChangeEmail(value) {
+        this.setState(Object.assign({}, this.state, {email: value}));
+    }
+
     handleSubmit(event) {
         event.preventDefault();
 
         let user = {
             username: this.state.username,
-            password: this.state.password
+            password: this.state.password,
+            email: this.state.email
         };
 
         this.props.onSubmit(user);
@@ -69,9 +77,18 @@ class UserSignup extends React.Component {
                             value={this.state.password}
                             onChange={this.handleChangePassword}
                             errorText="Password is required"/>
+                        <TextField
+                            label="Email"
+                            id="EmailField"
+                            type="text"
+                            className="md-row"
+                            required={true}
+                            value={this.state.email}
+                            onChange={this.handleChangeEmail}
+                            errorText="Email is required"/>
 
                         <Button id="submit" type="submit"
-                                disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' ? true : false}
+                                disabled={this.state.username == undefined || this.state.username == '' || this.state.password == undefined || this.state.password == '' || this.state.email == undefined || this.state.email == '' ? true : false}
                                 raised primary className="md-cell md-cell--2">Register</Button>
                         <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
