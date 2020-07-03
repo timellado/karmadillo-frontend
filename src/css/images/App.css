@@ -1,0 +1,29 @@
+
+.post{
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e8e7e7;
+  margin-top: 10px;
+}
+
+.actions{
+  margin-top:5px;
+  margin-right:10px;
+  border-top: 1px solid #e8e7e7;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.user{
+  display: block;
+  margin-left: 8px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.created-at{
+  margin-left: 8px;
+  font-size: 10pt;
+}
