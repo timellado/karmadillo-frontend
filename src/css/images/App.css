@@ -7,6 +7,7 @@
   margin-top: 10px;
   margin-right: 10%;
   margin-left: 10%;
+  border-radius: 1em;
 }
 
 .actions{
@@ -23,12 +24,21 @@
   padding: 1em;
   font-weight: 600;
   background-color: #d2beed;
+  border-radius: 1em 1em 0 0 ;
 }
 
 .user{
   display: block;
-  margin-left: 8px;
-  
+  padding: 1em;
+  background-color: #d2beed;
+  border-radius: 0 0 1em 1em;
+}
+
+.likes{
+  display: block;
+  padding: 1em;
+  background-color: #d2beed;
+  border-radius: 0 0 1em 1em;
 }
 
 .created-at{
@@ -39,4 +49,22 @@
 .n-card-img{
   width: 100%;
   height: 100%;
+}
+.n-card-img-comment{
+  width: 20px;
+  height: 20px;
+}
+
+.n-card-img-heart{
+  width: 25px;
+  height: 25px;
+  margin-bottom: 5px;
+}
+
+.btn{
+  background-color: transparent;
+  border-color: transparent;
+  float:right;
+  cursor:pointer;
+
 }

@@ -10,6 +10,8 @@ import ActivityService from '../services/ActivityService';
 import UserService from '../services/UserService';
 import '../css/images/App.css';
 import logo from '../css/images/karmadilloIcon.png';
+import commentIcon from '../css/images/commentIcon.png';
+import heartIcon from '../css/images/heartIcon.png';
 
 
 export class Post extends React.Component {
@@ -60,25 +62,17 @@ export class Post extends React.Component {
         return (
             <div className="post">
                 <div className="activity">
-                    <div>{this.state.activityData.name}</div>
+                    {this.state.activityData.name}
                 </div>
-                
                 <img className="n-card-img" src={logo} alt=""></img>
-                <div className="created-at">
-                </div>
                 <div className="user">
-                    <strong>{this.state.userData.username} </strong>
-                    {this.post.description} 
-                </div>
-                          
-                <div className="actions">
-                    <div>Like</div>
-                    <div>Comment</div>
-                </div>
+                <b>18 likes</b>
+                    <div><b>{this.state.userData.username} </b>
+                    <button id="comment" class="btn"><img className="n-card-img-comment" src={commentIcon} alt=""/></button>
+                    <button id="comment" class="btn"><img className="n-card-img-heart" src={heartIcon} alt=""/></button>
+                    {this.post.description}   </div>              
+                </div>            
             </div>
-
-
-
         );
     }
 }
