@@ -1,19 +1,18 @@
+"use strict";
+
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Page from './Page';
- 
-export class NewsFeed extends React.Component {
+import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from 'react-md';
 
-    render() {
-        return (
-            <Page>
-                <h1>Hello, World!</h1>
-            </Page>
-            
-        );
-    }
-}
-export default NewsFeed;
+import { Post } from './Post';
+import Page from './Page'
 
+const dataTableStyle = {
+  'marginBottom': '36px'
+};
 
- 
+export const NewsFeed = ({data}) => (
+    <Page>
+                {data.map((post, i) => <Post key={i} post={post} />)}
+    </Page>
+);
+
