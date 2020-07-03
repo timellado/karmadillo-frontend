@@ -1,10 +1,12 @@
 
 .post{
   background-color: white;
-  padding: 10px;
+  padding: 0px;
   border-radius: 5px;
   border: 1px solid #e8e7e7;
   margin-top: 10px;
+  margin-right: 10%;
+  margin-left: 10%;
 }
 
 .actions{
@@ -16,11 +18,17 @@
   justify-content: space-around;
 }
 
-.bold{
+.activity{
+  display: block;
+  padding: 1em;
+  font-weight: 600;
+  background-color: #d2beed;
+}
+
+.user{
   display: block;
   margin-left: 8px;
-  font-weight: 600;
-  font-size: 15px;
+  
 }
 
 .created-at{

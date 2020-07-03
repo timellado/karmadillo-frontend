@@ -42,6 +42,7 @@ export class NewsFeedView extends React.Component {
 
         return (
             <NewsFeed postData={this.state.postData} />
+
         );
     }
 }

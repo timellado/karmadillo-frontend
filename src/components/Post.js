@@ -11,6 +11,7 @@ import UserService from '../services/UserService';
 import '../css/images/App.css';
 import logo from '../css/images/karmadilloIcon.png';
 
+
 export class Post extends React.Component {
 
     constructor(props) {
@@ -53,24 +54,30 @@ export class Post extends React.Component {
 
     render() {
         if (this.state.loading) {
-            return (<h2>Loading...</h2>);
+           // return (<h2>Loading...</h2>);
+           return <div></div>;
         }
         return (
             <div className="post">
-                <div className="bold">
+                <div className="activity">
                     <div>{this.state.activityData.name}</div>
                 </div>
                 
                 <img className="n-card-img" src={logo} alt=""></img>
                 <div className="created-at">
                 </div>
-                <div className="bold">{this.state.userData.username}</div>
-                <div>{this.post.description}</div>            
+                <div className="user">
+                    <strong>{this.state.userData.username} </strong>
+                    {this.post.description} 
+                </div>
+                          
                 <div className="actions">
                     <div>Like</div>
                     <div>Comment</div>
                 </div>
             </div>
+
+
 
         );
     }
