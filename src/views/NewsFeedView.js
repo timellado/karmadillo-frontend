@@ -6,6 +6,7 @@ import { NewsFeed } from '../components/NewsFeed';
 
 import MovieService from '../services/MovieService';
 import PostService from '../services/PostService';
+import UserService from '../services/UserService';
 
 
 export class NewsFeedView extends React.Component {
@@ -15,7 +16,7 @@ export class NewsFeedView extends React.Component {
 
         this.state = {
             loading: false,
-            data: []
+            postData: [], 
         };
     }
 
@@ -24,9 +25,9 @@ export class NewsFeedView extends React.Component {
             loading: true
         });
 
-        PostService.getPosts().then((data) => {
+        PostService.getPosts().then((postData) => {
             this.setState({
-                data: [...data],
+                postData: [...postData], 
                 loading: false
             });
         }).catch((e) => {
@@ -40,7 +41,7 @@ export class NewsFeedView extends React.Component {
         }
 
         return (
-            <NewsFeed data={this.state.data} />
+            <NewsFeed postData={this.state.postData} />
         );
     }
 }

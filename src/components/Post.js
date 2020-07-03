@@ -6,43 +6,72 @@ import { Link } from 'react-router-dom';
 
 import { SimpleLink } from './SimpleLink';
 
+import ActivityService from '../services/ActivityService';
 import UserService from '../services/UserService';
 import '../css/images/App.css';
+import logo from '../css/images/karmadilloIcon.png';
 
 export class Post extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            loading: false,
+            activityData:null, 
+            userData:null
+        };
     }
 
+    componentWillMount(){
+        this.setState({
+            loading: true
+        });
+         this.post = this.props.post;
+        ActivityService.getActivity(this.post.activity).then((activityData) => {
+            this.setState({
+                activityData: activityData
+            });
+
+            UserService.getUser(this.state.activityData.user).then((userData) => {
+                this.setState({
+                    loading: false,
+                    userData: userData
+                });
+    
+            }).catch((e) => {
+                console.error(e);
+            });
+
+        }).catch((e) => {
+            console.error(e);
+        });
+        
+        
+    }
+
+
     render() {
+        if (this.state.loading) {
+            return (<h2>Loading...</h2>);
+        }
         return (
-            
             <div className="post">
-                <div className="user">
-                        <div>Carina Wollendorfer</div>
+                <div className="bold">
+                    <div>{this.state.activityData.name}</div>
                 </div>
-            <div className="created-at">
-                        20.7.2020
-                    </div>
-            <div key={this.props.key}>{this.props.post.description}</div>            
-            <div className="actions">
-              <div>
-                Like
-              </div>
-              <div>
-                Comment
-              </div>
+                
+                <img className="n-card-img" src={logo} alt=""></img>
+                <div className="created-at">
+                </div>
+                <div className="bold">{this.state.userData.username}</div>
+                <div>{this.post.description}</div>            
+                <div className="actions">
+                    <div>Like</div>
+                    <div>Comment</div>
+                </div>
             </div>
-        </div>
 
-
-
-
-     /*   
-        <div className="test">
-            <div key={this.props.key}>{this.props.post.description}</div>
-        </div>*/
         );
     }
 }

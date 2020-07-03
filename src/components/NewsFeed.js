@@ -10,9 +10,9 @@ const dataTableStyle = {
   'marginBottom': '36px'
 };
 
-export const NewsFeed = ({data}) => (
+export const NewsFeed = ({postData}) => (
     <Page>
-                {data.map((post, i) => <Post key={i} post={post} />)}
+                {postData.map((post, i) => <Post key={i} post={post} />)}
     </Page>
 );
 
