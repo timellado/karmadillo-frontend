@@ -10,8 +10,6 @@ import ActivityService from '../services/ActivityService';
 import UserService from '../services/UserService';
 import '../css/images/App.css';
 import logo from '../css/images/karmadilloIcon.png';
-import commentIcon from '../css/images/commentIcon.png';
-import heartIcon from '../css/images/heartIcon.png';
 
 
 export class Post extends React.Component {
@@ -22,7 +20,8 @@ export class Post extends React.Component {
         this.state = {
             loading: false,
             activityData:null, 
-            userData:null
+            userData:null,
+            numberOfComments: this.props.post.comments.length
         };
     }
 
@@ -30,7 +29,10 @@ export class Post extends React.Component {
         this.setState({
             loading: true
         });
-         this.post = this.props.post;
+
+        this.post = this.props.post;
+
+
         ActivityService.getActivity(this.post.activity).then((activityData) => {
             this.setState({
                 activityData: activityData
@@ -59,20 +61,25 @@ export class Post extends React.Component {
            // return (<h2>Loading...</h2>);
            return <div></div>;
         }
-        return (
-            <div className="post">
-                <div className="activity">
-                    {this.state.activityData.name}
+
+            return (
+                <div className="post">
+                    <div className="activity">
+                        {this.state.activityData.name}
+                    </div>
+                    <img className="n-card-img" src={logo} alt=""></img>
+                    <div className="user">
+                    <b>18 likes</b>
+                        <div classname="crop"><b>{this.state.userData.username} </b>
+                        <button id="like" class="btn-actions">L</button> 
+            <button id="comment" class="btn-actions">{this.state.numberOfComments}C</button> 
+                        {this.post.description}</div>              
+                    </div>            
                 </div>
-                <img className="n-card-img" src={logo} alt=""></img>
-                <div className="user">
-                <b>18 likes</b>
-                    <div><b>{this.state.userData.username} </b>
-                    <button id="comment" class="btn"><img className="n-card-img-comment" src={commentIcon} alt=""/></button>
-                    <button id="comment" class="btn"><img className="n-card-img-heart" src={heartIcon} alt=""/></button>
-                    {this.post.description}   </div>              
-                </div>            
-            </div>
-        );
+            );
+            
+
+        
+    
     }
 }

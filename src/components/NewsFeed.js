@@ -5,6 +5,7 @@ import { DataTable, TableHeader, TableBody, TableRow, TableColumn, Button } from
 
 import { Post } from './Post';
 import Page from './Page'
+import { Grid, Cell } from 'react-md';
 
 const dataTableStyle = {
   'marginBottom': '36px'
@@ -12,7 +13,9 @@ const dataTableStyle = {
 
 export const NewsFeed = ({postData}) => (
     <Page>
-                {postData.map((post, i) => <Post key={i} post={post} />)}
+      <Grid className="grid">
+                {postData.map((post, i) => <Cell key={i} size={4}> <Post key={i} post={post} /> </Cell>)}
+      </Grid>
     </Page>
 );
 

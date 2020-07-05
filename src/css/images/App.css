@@ -17,6 +17,8 @@
   padding-top: 15px;
   display: flex;
   justify-content: space-around;
+  color: gray;
+  font-weight: bold;
 }
 
 .activity{
@@ -32,6 +34,7 @@
   padding: 1em;
   background-color: #d2beed;
   border-radius: 0 0 1em 1em;
+  height: 80px;
 }
 
 .likes{
@@ -50,10 +53,6 @@
   width: 100%;
   height: 100%;
 }
-.n-card-img-comment{
-  width: 20px;
-  height: 20px;
-}
 
 .n-card-img-heart{
   width: 25px;
@@ -61,10 +60,13 @@
   margin-bottom: 5px;
 }
 
-.btn{
+.btn-actions{
   background-color: transparent;
   border-color: transparent;
   float:right;
   cursor:pointer;
+  color: gray;
+  font-weight: bold;
 
 }
+
