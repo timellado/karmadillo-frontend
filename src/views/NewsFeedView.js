@@ -4,7 +4,7 @@ import React from 'react';
 
 import { NewsFeed } from '../components/NewsFeed';
 
-import MovieService from '../services/MovieService';
+import ActivityService from '../services/ActivityService';
 import PostService from '../services/PostService';
 import UserService from '../services/UserService';
 
@@ -17,6 +17,7 @@ export class NewsFeedView extends React.Component {
         this.state = {
             loading: false,
             postData: [], 
+            currentUser: null
         };
     }
 
@@ -28,8 +29,10 @@ export class NewsFeedView extends React.Component {
         PostService.getPosts().then((postData) => {
             this.setState({
                 postData: [...postData], 
+                currentUser: UserService.getCurrentUser(),
                 loading: false
             });
+        
         }).catch((e) => {
             console.error(e);
         });
@@ -41,7 +44,8 @@ export class NewsFeedView extends React.Component {
         }
 
         return (
-            <NewsFeed postData={this.state.postData} />
+            
+            <NewsFeed postData={this.state.postData} currentUser={this.state.currentUser}/>
 
         );
     }
