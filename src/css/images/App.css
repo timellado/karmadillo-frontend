@@ -55,9 +55,13 @@
 }
 
 .n-card-img-heart{
-  width: 25px;
-  height: 25px;
-  margin-bottom: 5px;
+  width: 17px;
+  height: 17px;
+}
+
+.n-card-img-comment{
+  width: 16px;
+  height: 16px;
 }
 
 .btn-actions{

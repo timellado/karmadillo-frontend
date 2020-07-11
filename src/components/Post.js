@@ -9,7 +9,8 @@ import { SimpleLink } from './SimpleLink';
 import UserService from '../services/UserService';
 import '../css/images/App.css';
 import logo from '../css/images/karmadilloIcon.png';
-
+import commentIcon from '../css/images/commentIcon.png';
+import likeIcon from '../css/images/likeIcon.png';
 
 export class Post extends React.Component {
 
@@ -19,7 +20,8 @@ export class Post extends React.Component {
         this.state = {
             loading: false,
             userData: null,
-            numberOfComments: this.props.post.comments.length
+            numberOfComments: this.props.post.comments.length,
+            numberOfLikes: this.props.post.likes.length
         };
     }
 
@@ -51,12 +53,14 @@ export class Post extends React.Component {
                     <div className="activity">
                         {this.post.activity.name}
                     </div>
-                    <img className="n-card-img" src={logo} alt=""></img>
+                    <img className="n-card-img" src={logo} alt="Logo"></img>
                     <div className="user">
-                    <b>18 likes</b>
+                        <b>{this.state.numberOfLikes} likes</b>
                         <div className="crop"><b>{this.state.userData.username} </b>
-                        <button id="like" class="btn-actions">L</button> 
-            <button id="comment" class="btn-actions">{this.state.numberOfComments}C</button> 
+                        
+                        <button class="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
+                        <button class="btn-actions">{this.state.numberOfComments} <img className="n-card-img-comment" src={commentIcon} alt="Comment"></img></button> 
+                        
                         {this.post.description}</div>              
                     </div>            
                 </div>
