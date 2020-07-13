@@ -59,7 +59,6 @@ export default class PostService {
         });
     }
 
-<<<<<<< HEAD
     static createPost(post) {
         post.id = Math.floor((Math.random() * 100000000) + 1).toString();
         post.posters = {
@@ -76,6 +75,4 @@ export default class PostService {
             });
         });
     }
-=======
->>>>>>> develop
 }
