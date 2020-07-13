@@ -58,8 +58,8 @@ export class Post extends React.Component {
                         <b>{this.state.numberOfLikes} likes</b>
                         <div className="crop"><b>{this.state.userData.username} </b>
                         
-                        <button class="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
-                        <button class="btn-actions">{this.state.numberOfComments} <img className="n-card-img-comment" src={commentIcon} alt="Comment"></img></button> 
+                        <button className="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
+                        <button className="btn-actions">{this.state.numberOfComments} <img className="n-card-img-comment" src={commentIcon} alt="Comment"></img></button> 
                         
                         {this.post.description}</div>              
                     </div>            
