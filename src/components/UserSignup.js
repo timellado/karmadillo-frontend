@@ -1,11 +1,14 @@
 "use strict";
 
 import React from 'react';
-import { Card, Button, TextField, DatePicker } from 'react-md';
+import { Card, Button, TextField} from 'react-md';
+import DatePicker from "react-datepicker";
 import { withRouter } from 'react-router-dom';
 
 import { AlertMessage } from './AlertMessage';
 import Page from './Page';
+
+import "react-datepicker/dist/react-datepicker.css";
 
 
 const style = { maxWidth: 500 };
@@ -16,18 +19,13 @@ class UserSignup extends React.Component {
     constructor(props) {
         super(props);
 
-        var dateObj = new Date();
-        var month = dateObj.getUTCMonth() + 1; //months from 1-12
-        var day = dateObj.getUTCDate();
-        var year = dateObj.getUTCFullYear();
-
-        var newdate = day + "/" + month + "/" + year;
+        var newDate = new Date();
 
         this.state = {
             username: '',
             password: '',
             email: '',
-            birth: newdate
+            birth: newDate
         };
 
         this.handleChangeUsername = this.handleChangeUsername.bind(this);
@@ -59,9 +57,9 @@ class UserSignup extends React.Component {
         event.preventDefault();
 
         let dateObj = new Date();
-        let birth = this.state.birth.slice(-4);
+        let birth = this.state.birth;
         console.log(birth);
-        if ( birth <= dateObj.getUTCFullYear() - 6) {
+        if ( birth.getUTCFullYear() <= dateObj.getUTCFullYear() - 12) {
             console.log("Good date");
         } else {
             console.log("Bad date");
@@ -111,13 +109,8 @@ class UserSignup extends React.Component {
                             onChange={this.handleChangeEmail}
                             errorText="Email is required" />
                         <DatePicker
-                            style={{ marginBottom: "30px", marginRight: "250px" }}
-                            id="BirthField"
-                            label="Birth"
-                            className="md-row"
-                            displayMode="portrait"
                             required={true}
-                            value={this.state.birth}
+                            selected={this.state.birth}
                             onChange={this.handleChangeBirth}
                             errorText="Birth date is required" />
 
