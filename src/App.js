@@ -6,6 +6,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { MovieListView } from './views/MovieListView';
 import { MovieDetailView } from './views/MovieDetailView';
 import { MovieFormView } from './views/MovieFormView';
+import { PostDetailView } from './views/PostDetailView';
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
 import { NewsFeedView } from "./views/NewsFeedView";
@@ -23,6 +24,7 @@ export default class App extends React.Component {
             routes: [
                 { component: MovieListView, path: '/', exact: true },
                 { component: MovieDetailView, path: '/show/:id' },
+                { component: PostDetailView, path: '/post/:id' },
                 {
                     render: (props) => {
                         if (UserService.isAuthenticated()) {
