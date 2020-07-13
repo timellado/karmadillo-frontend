@@ -56,4 +56,19 @@ export default class UserService {
     static isAuthenticated() {
         return !!window.localStorage['jwtToken'];
     }
+
+    static getUser(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`http://localhost:3000/users/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving user');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
 }

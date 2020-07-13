@@ -1,0 +1,74 @@
+
+.post{
+  background-color: white;
+  padding: 0px;
+  border-radius: 5px;
+  border: 1px solid #e8e7e7;
+  margin-top: 10px;
+  border-radius: 1em;
+}
+
+.actions{
+  margin-top:5px;
+  margin-right:10px;
+  border-top: 1px solid #e8e7e7;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  color: gray;
+  font-weight: bold;
+}
+
+.activity{
+  display: block;
+  padding: 1em;
+  font-weight: 600;
+  background-color: #d2beed;
+  border-radius: 1em 1em 0 0 ;
+}
+
+.user{
+  display: block;
+  padding: 1em;
+  background-color: #d2beed;
+  border-radius: 0 0 1em 1em;
+  height: 80px;
+}
+
+.likes{
+  display: block;
+  padding: 1em;
+  background-color: #d2beed;
+  border-radius: 0 0 1em 1em;
+}
+
+.created-at{
+  margin-left: 8px;
+  font-size: 10pt;
+}
+
+.n-card-img{
+  width: 100%;
+  height: 100%;
+}
+
+.n-card-img-heart{
+  width: 17px;
+  height: 17px;
+}
+
+.n-card-img-comment{
+  width: 16px;
+  height: 16px;
+}
+
+.btn-actions{
+  background-color: transparent;
+  border-color: transparent;
+  float:right;
+  cursor:pointer;
+  color: gray;
+  font-weight: bold;
+
+}
+

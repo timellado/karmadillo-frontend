@@ -9,6 +9,7 @@ import { MovieFormView } from './views/MovieFormView';
 import { PostDetailView } from './views/PostDetailView';
 import { UserLoginView } from "./views/UserLoginView";
 import { UserSignupView } from "./views/UserSignupView";
+import { NewsFeedView } from "./views/NewsFeedView";
 
 import UserService from "./services/UserService";
 
@@ -45,7 +46,8 @@ export default class App extends React.Component {
                     }, path: '/add',
                 },
                 { component: UserLoginView, path: '/login' },
-                { component: UserSignupView, path: '/register' }
+                { component: UserSignupView, path: '/register' },
+                { component: NewsFeedView, path: '/newsFeed' },
             ]
         };
     }
