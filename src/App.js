@@ -22,7 +22,7 @@ export default class App extends React.Component {
         this.state = {
             title: 'Karmadillo',
             routes: [
-                { component: MovieListView, path: '/', exact: true },
+                { component: NewsFeedView, path: '/', exact: true },
                 { component: MovieDetailView, path: '/show/:id' },
                 { component: PostDetailView, path: '/post/:id' },
                 {
@@ -47,7 +47,7 @@ export default class App extends React.Component {
                 },
                 { component: UserLoginView, path: '/login' },
                 { component: UserSignupView, path: '/register' },
-                { component: NewsFeedView, path: '/newsFeed' },
+                { component: MovieListView, path: '/movies' },
             ]
         };
     }
