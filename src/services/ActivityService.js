@@ -59,4 +59,15 @@ export default class ActivityService {
         });
     }
 
+    static createActivity(activity) {
+        activity.id = Math.floor((Math.random() * 100000000) + 1).toString();
+        return new Promise((resolve, reject) => {
+            HttpService.post(ActivityService.baseURL(), activity, function(data) {
+                resolve(data);
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
+    }
+
 }
