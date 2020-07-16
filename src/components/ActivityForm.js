@@ -16,8 +16,8 @@ class ActivityForm extends React.Component {
     constructor(props) {
         super(props);
             this.state = {
-                name : 'TEST',
-                category : 'TEST'
+                name : '',
+                category : ''
             };
 
         this.handleChangeName = this.handleChangeName.bind(this);
@@ -46,9 +46,10 @@ class ActivityForm extends React.Component {
         return (
             <Page>
                 <Card style={style} className="md-block-centered">
+                    <div>Aew Activituy</div>
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <TextField
-                            label="Name"
+                            label="Activity Name *"
                             id="NameField"
                             type="text"
                             className="md-row"
@@ -57,7 +58,7 @@ class ActivityForm extends React.Component {
                             onChange={this.handleChangeName}
                             errorText="Name is required"/>
                         <TextField
-                            label="Category"
+                            label="Category *"
                             id="CategoryField"
                             type="text"
                             className="md-row"
