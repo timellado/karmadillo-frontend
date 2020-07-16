@@ -1,11 +1,19 @@
 
-.post{
-  background-color: white;
-  padding: 0px;
+.card{
+  background-color: #F0F0F0;
   border-radius: 5px;
   border: 1px solid #e8e7e7;
   margin-top: 10px;
   border-radius: 1em;
+}
+.activity{
+  background-color: #F0F0F0;
+  border-radius: 5px;
+  border: 1px solid #e8e7e7;
+  margin-top: 10px;
+  border-radius: 1em;
+  margin: 0 auto;
+  width:50em
 }
 
 .actions{
@@ -19,12 +27,13 @@
   font-weight: bold;
 }
 
-.activity{
+.headline{
   display: block;
   padding: 1em;
   font-weight: 600;
   background-color: #d2beed;
   border-radius: 1em 1em 0 0 ;
+  color: 	#505050
 }
 
 .user{
@@ -71,4 +80,9 @@
   font-weight: bold;
 
 }
+
+.buttons{
+  padding-top: 30px;
+}
+
 

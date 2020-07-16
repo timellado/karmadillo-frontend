@@ -43,20 +43,23 @@ class ActivityForm extends React.Component {
     }
 
     render() {
+
+
         return (
             <Page>
-                <Card style={style} className="md-block-centered">
-                    <div>Aew Activituy</div>
+                <div className="activity">
+
+                    <div className="headline">New Activity</div>
                     <form className="md-grid" onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
                         <TextField
-                            label="Activity Name *"
+                            label="Activity Name*"
                             id="NameField"
                             type="text"
                             className="md-row"
                             required={true}
                             value={this.state.name}
                             onChange={this.handleChangeName}
-                            errorText="Name is required"/>
+                            errorText=""/>
                         <TextField
                             label="Category *"
                             id="CategoryField"
@@ -65,16 +68,16 @@ class ActivityForm extends React.Component {
                             required={true}
                             value={this.state.category}
                             onChange={this.handleChangeCategory}
-                            errorText="Category is required"
-                            merrorText="Category is required"/>
-
+                            errorText=""/>
+                        <div className="buttons">
                         <Button id="submit" type="submit"
                                 disabled={this.state.name == undefined || this.state.name == '' || this.state.category == undefined || this.state.category == ''}
                                 raised primary className="md-cell md-cell--2">Save</Button>
                         <Button id="reset" type="reset" raised secondary className="md-cell md-cell--2">Dismiss</Button>
                         <AlertMessage className="md-row md-full-width" >{this.props.error ? `${this.props.error}` : ''}</AlertMessage>
+                        </div>
                     </form>
-                </Card>
+                    </div>
             </Page>
         );
     }

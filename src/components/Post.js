@@ -49,8 +49,8 @@ export class Post extends React.Component {
          }
             return (
                 
-                <div className="post">
-                    <div className="activity">
+                <div className="card">
+                    <div className="headline">
                         {this.post.activity.name}
                     </div>
                     <SimpleLink to={`/post/${this.post._id}`}>
