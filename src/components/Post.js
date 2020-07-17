@@ -54,7 +54,7 @@ export class Post extends React.Component {
                         {this.post.activity.name}
                     </div>
                     <SimpleLink to={`/post/${this.post._id}`}>
-                        <img className="n-card-img" src={logo} alt="Logo"></img>
+                        <img className="n-card-img" src={this.post.postPic} ></img>
                     </SimpleLink>
                     <div className="user">
                         <b>{this.state.numberOfLikes} likes</b>
