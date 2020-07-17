@@ -23,23 +23,14 @@ export default class App extends React.Component {
         this.state = {
             title: 'Karmadillo',
             routes: [
-                
+            
                 { component: NewsFeedView, path: '/', exact: true },
                 { component: MovieDetailView, path: '/show/:id' },
                 { component: PostDetailView, path: '/post/:id' },
-                {
-                    render: (props) => {
-                        if (UserService.isAuthenticated()) {
-                            return (<ActivityFormView {...props} />)
-                        }
-                        else {
-                            return (<Redirect to={'/login'} />)
-                        }
-                    }, path: '/add',
-                },
                 { component: UserLoginView, path: '/login' },
                 { component: UserSignupView, path: '/register' },
                 { component: MovieListView, path: '/movies' },
+                { component: ActivityFormView, path: '/add' }
             ]
         };
     }
