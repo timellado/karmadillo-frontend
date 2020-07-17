@@ -1,7 +1,6 @@
-  
 import React, { useState } from 'react'
 
-function Cloudinary() {
+function Cloudinary(props) {
   const [image, setImage] = useState('')
   const [loading, setLoading] = useState(false)
 
@@ -22,6 +21,7 @@ function Cloudinary() {
 
     setImage(file.secure_url)
     setLoading(false)
+    props.saveImage(file.secure_url);
   }
 
   return (

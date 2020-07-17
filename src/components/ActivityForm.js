@@ -19,7 +19,8 @@ class ActivityForm extends React.Component {
                 category : '', 
                 description : '',
                 user: UserService.isAuthenticated() ? UserService.getCurrentUser().id : undefined,
-                checked: false
+                checked: false, 
+                image: ''
             };
 
         this.handleChangeName = this.handleChangeName.bind(this);
@@ -49,9 +50,15 @@ class ActivityForm extends React.Component {
         } else {
             post.description = this.state.description;
             post.activity = 0;
+            post.postPic = this.state.image;
             this.props.onSubmit(activity, post);
         }
         
+    }
+
+    saveImage(image)
+    {
+        this.state.image = image;
     }
 
     handleChange() {
@@ -120,7 +127,7 @@ class ActivityForm extends React.Component {
                                     onChange={this.handleChangeDescription}
                                     errorText=""/>
 
-                                <Cloudinary></Cloudinary>
+                                <Cloudinary saveImage={(image) => this.saveImage(image)}></Cloudinary>
 
                                 <Button id="submit" type="submit"
                                         disabled={this.state.name == undefined || this.state.name == '' || this.state.category == undefined || this.state.category == ''}
