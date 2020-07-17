@@ -16,9 +16,7 @@ export const NewsFeed = ({postData, currentUser}) => (
 
     <Page>
       <Grid> 
-        
-     
-        {postData.filter(p => p.activity.user.localeCompare(currentUser.id)).map((post, i) => <Cell key={i} size={4}> <Post key={i} post={post} /> </Cell>)}
+        {postData.filter(p => p.activity.user.localeCompare(currentUser.id)).map((post, i) => <Cell key={i} size={6}> <Post key={i} post={post} /> </Cell>)}
       </Grid>
     </Page>
 );
