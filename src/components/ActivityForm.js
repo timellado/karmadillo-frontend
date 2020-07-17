@@ -7,6 +7,7 @@ import { withRouter } from 'react-router-dom'
 import { AlertMessage } from './AlertMessage';
 import Page from './Page';
 import UserService from '../services/UserService';
+import Cloudinary from './Cloudinary';
 
 
 class ActivityForm extends React.Component {
@@ -118,6 +119,8 @@ class ActivityForm extends React.Component {
                                     value={this.state.description}
                                     onChange={this.handleChangeDescription}
                                     errorText=""/>
+
+                                <Cloudinary></Cloudinary>
 
                                 <Button id="submit" type="submit"
                                         disabled={this.state.name == undefined || this.state.name == '' || this.state.category == undefined || this.state.category == ''}
