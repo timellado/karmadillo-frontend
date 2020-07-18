@@ -45,6 +45,7 @@ class ActivityForm extends React.Component {
         activity.name = this.state.name;
         activity.category = this.state.category;
         activity.user =this.state.user;
+        
         if(!this.state.checked){
             this.props.onSubmit(activity);
         } else {
@@ -53,7 +54,6 @@ class ActivityForm extends React.Component {
             post.postPic = this.state.image;
             this.props.onSubmit(activity, post);
         }
-        
     }
 
     saveImage(image)
@@ -65,7 +65,6 @@ class ActivityForm extends React.Component {
         this.setState({
             checked: !this.state.checked
         });
-
     }
 
     handleChangeDescription(value) {
@@ -105,6 +104,7 @@ class ActivityForm extends React.Component {
                                 <label>I want to post this activity so my followers can see it</label>
                             </div>
                             
+                            
                             {this.state.checked === false &&
                             <div className="buttons">
                                 <Button id="submit" type="submit"
@@ -116,6 +116,7 @@ class ActivityForm extends React.Component {
                             </div>
                             }
 
+                            {/*posting activity*/}
                             {this.state.checked === true &&
                                 <div>
                                     <TextField
@@ -127,7 +128,7 @@ class ActivityForm extends React.Component {
                                     onChange={this.handleChangeDescription}
                                     errorText=""/>
 
-                                <Cloudinary saveImage={(image) => this.saveImage(image)}></Cloudinary>
+                                <Cloudinary saveImage={(image) => this.saveImage(image)}></Cloudinary> {/*upload image*/}
 
                                 <Button id="submit" type="submit"
                                         disabled={this.state.name == undefined || this.state.name == '' || this.state.category == undefined || this.state.category == ''}

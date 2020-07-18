@@ -1,10 +1,15 @@
+.outer {
+  width:100%
+}
 
 .card{
   background-color: #F0F0F0;
   border-radius: 5px;
   border: 1px solid #e8e7e7;
-  margin-top: 10px;
   border-radius: 1em;
+  width: 700px;
+  display: table;
+  margin: 0 auto;
 }
 .activity{
   background-color: #F0F0F0;
@@ -84,13 +89,6 @@
 .buttons{
   padding-top: 30px;
 }
-
-
-
-
-
-
-
 
 .App {
   text-align: center;

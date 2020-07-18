@@ -2,9 +2,6 @@
 
 import React, { useReducer } from 'react';
 
-import MovieForm from './../components/MovieForm';
-
-import MovieService from '../services/MovieService';
 import ActivityService from '../services/ActivityService';
 import PostService from '../services/PostService';
 import ActivityForm from '../components/ActivityForm';
@@ -23,7 +20,8 @@ export class ActivityFormView extends React.Component {
                 error: undefined
             });
     }
-
+    
+    /* create only activity */
     async createActivity(activity) {
             try {
                 let ret = await ActivityService.createActivity(activity);
@@ -34,6 +32,7 @@ export class ActivityFormView extends React.Component {
             }
     }
 
+    /* create activity and post*/
     async createPost(activity,post) {
         try {
             
