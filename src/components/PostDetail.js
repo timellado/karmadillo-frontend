@@ -96,8 +96,11 @@ export class PostDetail extends React.Component {
                         </GridList>
                         
                     </Grid>
-                    <div>
-                        <b>{this.props.post.likes.length} likes</b>
+                    <div style={{ width:"700px"}}>
+                        <div style={{ display:"flex", flexDirection:"row"}}>
+                            <b>{this.props.post.likes.length} likes</b>
+                            <button onClick={() => this.props.onLikePost(this.props.post)} className="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
+                        </div>
                         <p>
                             <b>{this.props.postCreator.username}</b> {this.props.post.description}
                         </p>

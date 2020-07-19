@@ -15,7 +15,7 @@ const dataTableStyle = {
 export const NewsFeed = ({ postData, currentUser }) => (
   <Page className="">
     <Grid>
-      {postData.filter(p => p.activity.user.localeCompare(currentUser.id)).map((post, i) => <Cell key={i} size={12}> <Post key={i} post={post} /> </Cell>)}
+      {postData.filter(p => p.activity.user.localeCompare(currentUser.id)).map((post, i) => <Cell key={i} size={12}> <Post key={i} post={post} onLike={(post) => this.createPostLike(post)} /> </Cell>)}
     </Grid>
   </Page>
 );

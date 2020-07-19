@@ -75,7 +75,6 @@ export class PostDetailView extends React.Component {
                 comment.likes.push(currentUser.id);
             }
             let like = await CommentService.updateComment(comment);
-            console.log(currentUser);
             this.props.history.go(0);
         } catch(err) {
             console.error(err);
@@ -84,13 +83,30 @@ export class PostDetailView extends React.Component {
         
     }
 
+    async onLikePost(post){
+        try {
+            let currentUser = UserService.getCurrentUser();
+            if (post.likes.some(e => e._id === currentUser.id)) {
+                var index = post.likes.indexOf(currentUser.id);
+                post.likes.splice(index, 1);
+            } else {
+                post.likes.push(currentUser.id);
+            }
+            let like = await PostService.updatePost(post);
+            this.props.history.go(0);
+        } catch(err) {
+            console.error(err);
+            this.setState(Object.assign({}, this.state, {error: 'Error while creating comment'}));
+        }
+    }
+
     render() {
         if (this.state.loading) {
             return (<h2>Loading...</h2>);
         }
 
         return (
-            <PostDetail comments={this.state.comments} postCreator={this.state.postCreator} post={this.state.post} onDelete={(id) => this.deletePost(id)} onSubmit={(comment) => this.createComment(comment)} onLike={(comment) => this.createCommentLike(comment)}/>
+            <PostDetail comments={this.state.comments} postCreator={this.state.postCreator} post={this.state.post} onDelete={(id) => this.deletePost(id)} onSubmit={(comment) => this.createComment(comment)} onLike={(comment) => this.createCommentLike(comment)} onLikePost={(post) => this.onLikePost(post)}/>
         );
     }
 }
