@@ -1,5 +1,5 @@
 # sebamaster-movie-frontend application
-Movies example application based on React. Backend can be found [here](https://github.com/sebischair/sebamaster-movie-backend)
+Karmadillo application based on React. Backend can be found [here](https://github.com/timellado/karmadillo-backend)
 
 ## Prerequisites
 
@@ -10,24 +10,24 @@ Both for the front end and the back end check:
 
 ## Getting Started
 
-To get you started you can simply clone the [sebamaster-movie-frontend](https://github.com/sebischair/sebamaster-movie-frontend/) repository and install all its dependencies:
+To get you started you can simply clone the [Karmadillo-frontend](https://github.com/timellado/karmadillo-frontend) repository and install all its dependencies:
 
 ### Prerequisites
 
-You need git to clone the [sebamaster-movie-frontend](https://github.com/sebischair/sebamaster-movie-frontend/)  repository. You can get git from [http://git-scm.com/](http://git-scm.com/).
+You need git to clone the [Karmadillo-frontend](https://github.com/timellado/karmadillo-frontend)  repository. You can get git from [http://git-scm.com/](http://git-scm.com/).
 
-We also use a number of node.js tools to initialize and test [sebamaster-movie-frontend](https://github.com/sebischair/sebamaster-movie-frontend/) . You must have node.js and its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
+We also use a number of node.js tools to initialize and test [Karmadillo-frontend](https://github.com/timellado/karmadillo-frontend) . You must have node.js and its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
 
 ### Clone Movie Project
 
-Clone the [sebamaster-movie-frontend](https://github.com/sebischair/sebamaster-movie-frontend/)  repository using [git](http://git-scm.com/):
+Clone the [Karmadillo-frontend](https://github.com/timellado/karmadillo-frontend)  repository using [git](http://git-scm.com/):
 
 ```
 git clone https://github.com/sebischair/sebamaster-movie-frontend.git
 cd sebamaster-movie-frontend
 ```
 
-If you just want to start a new project without the [sebamaster-movie-frontend](https://github.com/sebischair/sebamaster-movie-frontend/)  commit history then you can do:
+If you just want to start a new project without the [Karmadillo-frontend](https://github.com/timellado/karmadillo-frontend)  commit history then you can do:
 
 ```bash
 git clone --depth=1 https://github.com/sebischair/sebamaster-movie-frontend.git <your-project-name>
@@ -72,4 +72,4 @@ this server is:
 npm start
 ```
 
-Now browse to the app at `http://localhost:8000/index.html`.
+Now browse to the app at `http://localhost:8000/`.
