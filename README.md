@@ -1,4 +1,4 @@
-# sebamaster-movie-frontend application
+# Karmadillo-frontend application
 Karmadillo application based on React. Backend can be found [here](https://github.com/timellado/karmadillo-backend)
 
 ## Prerequisites
@@ -18,19 +18,19 @@ You need git to clone the [Karmadillo-frontend](https://github.com/timellado/kar
 
 We also use a number of node.js tools to initialize and test [Karmadillo-frontend](https://github.com/timellado/karmadillo-frontend) . You must have node.js and its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
 
-### Clone Movie Project
+### Clone Karmadillo Project
 
 Clone the [Karmadillo-frontend](https://github.com/timellado/karmadillo-frontend)  repository using [git](http://git-scm.com/):
 
 ```
-git clone https://github.com/sebischair/sebamaster-movie-frontend.git
-cd sebamaster-movie-frontend
+git clone https://github.com/timellado/karmadillo-frontend.git
+cd karmadillo-frontend
 ```
 
 If you just want to start a new project without the [Karmadillo-frontend](https://github.com/timellado/karmadillo-frontend)  commit history then you can do:
 
 ```bash
-git clone --depth=1 https://github.com/sebischair/sebamaster-movie-frontend.git <your-project-name>
+git clone --depth=1 https://github.com/timellado/karmadillo-frontend.git <your-project-name>
 ```
 
 The `depth=1` tells git to only pull down one commit worth of historical data.
@@ -38,7 +38,7 @@ The `depth=1` tells git to only pull down one commit worth of historical data.
 In case you would like to try the application without a server you can use the branch <severless>
 
 ```bash
-git clone -b serverless --depth=1 https://github.com/sebischair/sebamaster-movie-frontend.git <your-project-name>
+git clone -b serverless --depth=1 https://github.com/timellado/karmadillo-frontend.git <your-project-name>
 ```
 
 ### Install Dependencies
