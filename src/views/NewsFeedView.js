@@ -3,8 +3,6 @@
 import React from 'react';
 
 import { NewsFeed } from '../components/NewsFeed';
-
-import ActivityService from '../services/ActivityService';
 import PostService from '../services/PostService';
 import UserService from '../services/UserService';
 
@@ -43,10 +41,8 @@ export class NewsFeedView extends React.Component {
             return (<h2>Loading...</h2>);
         }
 
-        return (
-            
+        return ( 
             <NewsFeed postData={this.state.postData} currentUser={this.state.currentUser}/>
-
         );
     }
 }
