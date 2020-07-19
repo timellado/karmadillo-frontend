@@ -1,6 +1,9 @@
 .outer {
   width:100%
 }
+.detail {
+  margin-top:100px;
+}
 
 .card{
   background-color: #F0F0F0;
@@ -10,6 +13,17 @@
   width: 700px;
   display: table;
   margin: 0 auto;
+}
+
+.card-detail{
+  background-color: #F0F0F0;
+  border-radius: 5px;
+  border: 1px solid #e8e7e7;
+  border-radius: 1em;
+  width: 700px;
+  display: table;
+  margin: 0 auto;
+  background-color: white;
 }
 .activity{
   background-color: #F0F0F0;
@@ -40,6 +54,25 @@
   border-radius: 1em 1em 0 0 ;
   color: 	#505050
 }
+
+.title{
+
+  font-size: 20px;
+}
+
+.category{
+  font-weight:400;
+}
+
+
+.down{
+  display: block;
+  padding: 1em;
+  font-weight: 600;
+  background-color: #d2beed;
+  color: 	#505050
+}
+
 
 .user{
   display: block;
@@ -137,4 +170,8 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.left-align{
+  text-align:right;
 }
