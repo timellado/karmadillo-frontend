@@ -72,3 +72,27 @@
 
 }
 
+.btn-actions-post{
+  background-color: transparent;
+  border-color: transparent;
+  cursor:pointer;
+  color: gray;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.post-comment{
+  display: flex; 
+  flex-direction: row; 
+  margin-bottom: 35px;
+}
+
+.post-comment-data {
+  padding-left: 20px;
+}
+
+.post-comment-data p {
+  margin-bottom: 0px;
+}
+
+
