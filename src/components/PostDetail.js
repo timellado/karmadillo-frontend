@@ -2,11 +2,13 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom'
-import { Card, CardTitle, CardText, Media, MediaOverlay, Grid, GridList, Cell, Button, FontIcon } from 'react-md';
+import { Card, CardTitle, CardText, Media, Avatar, TextField, MediaOverlay, Grid, GridList, Cell, Button, FontIcon } from 'react-md';
 
 import Page from './Page';
 
 import UserService from '../services/UserService';
+
+import likeIcon from '../css/images/likeIcon.png';
 
 import moment from 'moment';
 
@@ -16,9 +18,55 @@ export class PostDetail extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.state = {
+            commentText: '',
+            post: props.post
+        }
+        this.handleChangeCommentText = this.handleChangeCommentText.bind(this);
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChangeCommentText(value) {
+        this.setState(Object.assign({}, this.state, {commentText: value}));
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+
+        let comment = {};
+
+        comment.text = this.state.commentText;
+        comment.post = this.state.post._id;
+
+        this.props.onSubmit(comment);
     }
 
     render() {
+        let table = []
+
+        for (let i = 0; i < this.props.post.activity.tag.length; i++) {
+            //Create the parent and add the children
+            table.push(<Cell align={"bottom"} size={5}>{this.props.post.activity.tag[i]}</Cell>)
+        }
+
+        let postComments = [];
+        (async () => {
+            for (let i = 0; i < this.props.comments.length; i++) {
+                //Create the parent and add the children
+                postComments.push(<div className="post-comment">
+                    <Avatar src="https://picsum.photos/40/40?image=153" />
+                    <div className="post-comment-data">
+                    <p><b>{this.props.comments[i].commentUser}</b> {moment(this.props.comments[i].createdAt).fromNow()}</p>
+                    <p>{this.props.comments[i].text}</p>
+                    <button className="btn-actions-post"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img> {this.props.comments[i].likes.length} likes</button>
+                    <b>Answers</b>
+                    </div>
+                    </div>)
+            }
+        })();
+
         return (
             <Page>
                 <Card style={style} className="md-block-centered">
@@ -42,22 +90,43 @@ export class PostDetail extends React.Component {
                                 }
                             </Cell>
                             <Cell align={"bottom"} size={12}>Posted: {moment(this.props.post.createdAt).fromNow()}</Cell> 
-                            <Cell align={"bottom"} size={5}>Created by: {}</Cell>
+                            <Cell align={"bottom"} size={5}>Created by: {this.props.postCreator.username}</Cell>
+                            <Cell align={"bottom"} size={5}>Category: {this.props.post.activity.category}</Cell>
+                            {table}
                         </GridList>
                         
                     </Grid>
-
-                    <CardTitle title={this.props.post.activity.name} subtitle={this.props.post.activity.category} />
-
-                    <CardText>
+                    <div>
+                        <b>{this.props.post.likes.length} likes</b>
                         <p>
-                            {this.props.post.activity.name}
+                            <b>{this.props.postCreator.username}</b> {this.props.post.description}
                         </p>
-                        <p>
-                            {this.props.post.description}
-                        </p>
-                    </CardText>
+                    </div>
                 </Card>
+                <div>
+                    <p>{this.props.post.comments.length} comments</p>
+                </div>
+                <Grid className="grid-data" >
+                <Cell size={1}><Avatar src="https://picsum.photos/40/40?image=153" /></Cell>
+                <Cell size={5}>
+                    
+                </Cell>
+                <form onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
+                <TextField
+                    id="floating-center-title"
+                    label="Add a comment"
+                    type="text"
+                    lineDirection="center"
+                    className="md-cell"
+                    value={this.state.commentText}
+                    onChange={this.handleChangeCommentText}
+                    />
+                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                </form> 
+                <Cell><Button onClick={() => this.props.history.push('/')}></Button></Cell> 
+                </Grid>
+                {postComments}
+
             </Page>
         );
     }
