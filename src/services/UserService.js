@@ -9,11 +9,13 @@ export default class UserService {
 
     static baseURL() {return 'http://localhost:3000/auth'; }
 
-    static register(user, pass) {
+    static register(user, pass, email, birthDate) {
         return new Promise((resolve, reject) => {
             HttpService.post(`${UserService.baseURL()}/register`, {
                 username: user,
-                password: pass
+                password: pass,
+                email: email,
+                birth: birthDate
             }, function(data) {
                 resolve(data);
             }, function(textStatus) {
@@ -53,5 +55,20 @@ export default class UserService {
 
     static isAuthenticated() {
         return !!window.localStorage['jwtToken'];
+    }
+
+    static getUser(id) {
+        return new Promise((resolve, reject) => {
+            HttpService.get(`http://localhost:3000/users/${id}`, function(data) {
+                if(data != undefined || Object.keys(data).length !== 0) {
+                    resolve(data);
+                }
+                else {
+                    reject('Error while retrieving user');
+                }
+            }, function(textStatus) {
+                reject(textStatus);
+            });
+        });
     }
 }
