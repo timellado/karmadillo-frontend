@@ -68,63 +68,59 @@ export class PostDetail extends React.Component {
         })();
 
         return (
-            <Page>  
-                <Card style={style} className="md-block-centered">
-                    <Grid className="grid-data" >
-                        <Cell size={7}>
-                        <img className="n-card-img" src={this.props.post.postPic} ></img>
-                        </Cell>
-                        <GridList className="grid-buttons" stacked={true} >
-                            <Cell align={"bottom"} size={5}>
-                                {UserService.isAuthenticated() ?
-                                    <Link to={{pathname: `/edit/${this.props.post._id}`, state : {post : this.props.post}}}><Button icon>mode_edit</Button></Link>
-                                    : <Link to={'/login'}><Button icon>mode_edit</Button></Link>
-                                }
-                            </Cell>
-                            <Cell align={"bottom"} size={5}>
-                                {UserService.isAuthenticated() ?
-                                    <Button onClick={() => this.props.onDelete(this.props.post._id)} icon>delete</Button>
-                                    :   <Link to={'/login'}><Button icon>delete</Button></Link>
-                                }
-                            </Cell>
-                            <Cell align={"bottom"} size={12}>Posted: {moment(this.props.post.createdAt).fromNow()}</Cell> 
-                            <Cell align={"bottom"} size={5}>Created by: {this.props.postCreator.username}</Cell>
-                            <Cell align={"bottom"} size={5}>Category: {this.props.post.activity.category}</Cell>
-                            {table}
-                        </GridList>
-                        
-                    </Grid>
-                    <div>
-                        <b>{this.props.post.likes.length} likes</b>
-                        <p>
-                            <b>{this.props.postCreator.username}</b> {this.props.post.description}
-                        </p>
-                    </div>
-                </Card>
-                <div>
-                    <p>{this.props.comments.length} comments</p>
-                </div>
-                <Grid className="grid-data" >
-                <Cell size={1}><Avatar src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?size=626&ext=jpg" /></Cell>
-                <Cell size={5}>
-                    
-                </Cell>
-                <form onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
-                <TextField
-                    id="floating-center-title"
-                    label="Add a comment"
-                    type="text"
-                    lineDirection="center"
-                    className="md-cell"
-                    value={this.state.commentText}
-                    onChange={this.handleChangeCommentText}
-                    />
-                <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
-                </form> 
-                </Grid>
-                {postComments}
 
-            </Page>
+            <Page>
+                <div className="outer detail">
+                    <div className="card-detail">
+                        <div className= "headline">
+                            <div className="title">
+                                {this.props.post.activity.name} 
+                            </div>
+                            <div className="category">
+                                {this.props.post.activity.category}
+                            </div>
+                            <div className="category left-align ">
+                                Posted: {moment(this.props.post.createdAt).fromNow()}
+                                {UserService.isAuthenticated() ?
+                                                <Link to={{pathname: `/edit/${this.props.post._id}`, state : {post : this.props.post}}}><Button icon>mode_edit</Button></Link>
+                                                : <Link to={'/login'}><Button icon>mode_edit</Button></Link>
+                                }
+                                {UserService.isAuthenticated() ?
+                                                <Button onClick={() => this.props.onDelete(this.props.post._id)} icon>delete</Button>
+                                                :   <Link to={'/login'}><Button icon>delete</Button></Link>
+                                }
+
+                            </div>
+                        </div>
+
+                        <img className="n-card-img" src={this.props.post.postPic} ></img>
+                        <div className="down">
+                            <b>{this.props.post.likes.length} likes</b>
+                            <p>
+                                <b>{this.props.postCreator.username}</b> {this.props.post.description}
+                            </p>
+                        </div>
+
+                        <form onSubmit={this.handleSubmit} onReset={() => this.props.history.goBack()}>
+                        <TextField
+                            id="floating-center-title"
+                            label="Add a comment"
+                            type="text"
+                            lineDirection="center"
+                            className="md-cell"
+                            value={this.state.commentText}
+                            onChange={this.handleChangeCommentText}
+                            />
+                        <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
+                        </form> 
+
+                        <br></br>
+                            {postComments}
+                     
+                    </div>   
+            </div>
+        </Page>
+                           
         );
     }
 }
