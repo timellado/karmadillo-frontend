@@ -11,6 +11,7 @@ import '../css/images/App.css';
 import logo from '../css/images/karmadilloIcon.png';
 import commentIcon from '../css/images/commentIcon.png';
 import likeIcon from '../css/images/likeIcon.png';
+import PostService from '../services/PostService';
 
 export class Post extends React.Component {
 
@@ -41,6 +42,23 @@ export class Post extends React.Component {
         });
     }
 
+    async onLike(post){
+        try {
+            let currentUser = UserService.getCurrentUser();
+            if (this.props.post.likes.some(e => e._id === currentUser.id)) {
+                var index = this.props.post.likes.indexOf(currentUser.id);
+                this.props.post.likes.splice(index, 1);
+            } else {
+                this.props.post.likes.push(currentUser.id);
+            }
+            let like = await PostService.updatePost(post);
+            this.props.history.go(0);
+        } catch(err) {
+            console.error(err);
+            this.setState(Object.assign({}, this.state, {error: 'Error while creating comment'}));
+        }
+    }
+
 
     render() {
         if (this.state.loading) {
@@ -64,7 +82,7 @@ export class Post extends React.Component {
                             <b>{this.state.numberOfLikes} likes</b>
                             <div className="crop"><b>{this.state.userData.username} </b>
                             
-                            <button className="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
+                            <button onClick={() => this.onLike(this.post)} className="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
                             <SimpleLink to={`/post/${this.post._id}`}>
                                 <button className="btn-actions">{this.state.numberOfComments} <img className="n-card-img-comment" src={commentIcon} alt="Comment"></img></button> 
                             </SimpleLink>

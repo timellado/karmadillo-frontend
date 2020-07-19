@@ -95,7 +95,10 @@ export class PostDetail extends React.Component {
 
                         <img className="n-card-img" src={this.props.post.postPic} ></img>
                         <div className="down">
-                            <b>{this.props.post.likes.length} likes</b>
+                            <div>
+                                <b>{this.props.post.likes.length} likes</b>
+                                <button onClick={() => this.props.onLikePost(this.props.post)} className="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
+                            </div>
                             <p>
                                 <b>{this.props.postCreator.username}</b> {this.props.post.description}
                             </p>

@@ -77,6 +77,11 @@
   color: 	#505050
 }
 
+.down div {
+  display: flex;
+  flex-direction: row;
+}
+
 
 .user{
   display: block;
