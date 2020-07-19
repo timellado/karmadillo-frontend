@@ -52,9 +52,13 @@ export class Post extends React.Component {
                         <div className="headline">
                             {this.post.activity.name}
                         </div>
+                        {this.post.postPic !== '' &&
                         <SimpleLink to={`/post/${this.post._id}`}>
                             <img className="n-card-img" src={this.post.postPic} ></img>
                         </SimpleLink>
+                        }
+                      
+
                         <div className="user">
                             <b>{this.state.numberOfLikes} likes</b>
                             <div className="crop"><b>{this.state.userData.username} </b>
