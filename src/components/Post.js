@@ -47,15 +47,16 @@ export class Post extends React.Component {
              return (<h2>Loading...</h2>);
          }
             return (
+                <SimpleLink to={`/post/${this.post._id}`}>
                 <div className="outer">
                     <div className="card">
                         <div className="headline">
                             {this.post.activity.name}
                         </div>
                         {this.post.postPic !== '' &&
-                        <SimpleLink to={`/post/${this.post._id}`}>
+                        
                             <img className="n-card-img" src={this.post.postPic} ></img>
-                        </SimpleLink>
+                        
                         }
                       
 
@@ -71,6 +72,7 @@ export class Post extends React.Component {
                         </div>            
                     </div>
                 </div>
+                </SimpleLink>
             );
             
 
