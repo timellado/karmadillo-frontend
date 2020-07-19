@@ -56,7 +56,7 @@ export class PostDetail extends React.Component {
             for (let i = 0; i < this.props.comments.length; i++) {
                 //Create the parent and add the children
                 postComments.push(<div className="post-comment">
-                    <Avatar src="https://picsum.photos/40/40?image=153" />
+                    <Avatar src="https://img.freepik.com/free-photo/portrait-white-man-isolated_53876-40306.jpg?size=626&ext=jpg" />
                     <div className="post-comment-data">
                     <p><b>{this.props.comments[i].commentUser}</b> {moment(this.props.comments[i].createdAt).fromNow()}</p>
                     <p>{this.props.comments[i].text}</p>
@@ -68,6 +68,7 @@ export class PostDetail extends React.Component {
         })();
 
         return (
+
             <Page>
                 <div className="outer detail">
                     <div className="card-detail">
@@ -88,6 +89,7 @@ export class PostDetail extends React.Component {
                                                 <Button onClick={() => this.props.onDelete(this.props.post._id)} icon>delete</Button>
                                                 :   <Link to={'/login'}><Button icon>delete</Button></Link>
                                 }
+
                             </div>
                         </div>
 
@@ -118,6 +120,7 @@ export class PostDetail extends React.Component {
                     </div>   
             </div>
         </Page>
+                           
         );
     }
 }
