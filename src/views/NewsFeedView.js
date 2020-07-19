@@ -14,23 +14,25 @@ export class NewsFeedView extends React.Component {
 
         this.state = {
             loading: false,
-            postData: [], 
-            currentUser: null
+            postData: [],
+            currentUser: null,
         };
     }
 
-    componentWillMount(){
+
+
+    componentWillMount() {
         this.setState({
             loading: true
         });
 
         PostService.getPosts().then((postData) => {
             this.setState({
-                postData: [...postData], 
+                postData: [...postData],
                 currentUser: UserService.getCurrentUser(),
                 loading: false
             });
-        
+
         }).catch((e) => {
             console.error(e);
         });
@@ -41,8 +43,10 @@ export class NewsFeedView extends React.Component {
             return (<h2>Loading...</h2>);
         }
 
-        return ( 
-            <NewsFeed postData={this.state.postData} currentUser={this.state.currentUser}/>
+        return (
+                <NewsFeed postData={this.state.postData} currentUser={this.state.currentUser} />
+
+
         );
     }
 }
