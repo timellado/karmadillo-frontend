@@ -1,11 +1,24 @@
+.outer {
+  width:100%
+}
 
-.post{
-  background-color: white;
-  padding: 0px;
+.card{
+  background-color: #F0F0F0;
+  border-radius: 5px;
+  border: 1px solid #e8e7e7;
+  border-radius: 1em;
+  width: 700px;
+  display: table;
+  margin: 0 auto;
+}
+.activity{
+  background-color: #F0F0F0;
   border-radius: 5px;
   border: 1px solid #e8e7e7;
   margin-top: 10px;
   border-radius: 1em;
+  margin: 0 auto;
+  width:50em
 }
 
 .actions{
@@ -19,12 +32,13 @@
   font-weight: bold;
 }
 
-.activity{
+.headline{
   display: block;
   padding: 1em;
   font-weight: 600;
   background-color: #d2beed;
   border-radius: 1em 1em 0 0 ;
+  color: 	#505050
 }
 
 .user{
@@ -72,3 +86,31 @@
 
 }
 
+.buttons{
+  padding-top: 30px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}

@@ -31,15 +31,6 @@ export class PostDetailView extends React.Component {
                 console.error(err);
             }
         })();
-
-        // MovieService.getMovie(id).then((data) => {
-        //     this.setState({
-        //         movie: data,
-        //         loading: false
-        //     });
-        // }).catch((e) => {
-        //     console.error(e);
-        // });
     }
 
     async deletePost(id) {

@@ -44,28 +44,32 @@ export class Post extends React.Component {
 
     render() {
         if (this.state.loading) {
-            // return (<h2>Loading...</h2>);
-            return <div></div>;
+             return (<h2>Loading...</h2>);
          }
             return (
-                
-                <div className="post">
-                    <div className="activity">
-                        {this.post.activity.name}
-                    </div>
-                    <SimpleLink to={`/post/${this.post._id}`}>
-                        <img className="n-card-img" src={logo} alt="Logo"></img>
-                    </SimpleLink>
-                    <div className="user">
-                        <b>{this.state.numberOfLikes} likes</b>
-                        <div className="crop"><b>{this.state.userData.username} </b>
-                        
-                        <button className="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
+                <div className="outer">
+                    <div className="card">
+                        <div className="headline">
+                            {this.post.activity.name}
+                        </div>
+                        {this.post.postPic !== '' &&
                         <SimpleLink to={`/post/${this.post._id}`}>
-                            <button className="btn-actions">{this.state.numberOfComments} <img className="n-card-img-comment" src={commentIcon} alt="Comment"></img></button> 
+                            <img className="n-card-img" src={this.post.postPic} ></img>
                         </SimpleLink>
-                        {this.post.description}</div>              
-                    </div>            
+                        }
+                      
+
+                        <div className="user">
+                            <b>{this.state.numberOfLikes} likes</b>
+                            <div className="crop"><b>{this.state.userData.username} </b>
+                            
+                            <button className="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
+                            <SimpleLink to={`/post/${this.post._id}`}>
+                                <button className="btn-actions">{this.state.numberOfComments} <img className="n-card-img-comment" src={commentIcon} alt="Comment"></img></button> 
+                            </SimpleLink>
+                            {this.post.description}</div>              
+                        </div>            
+                    </div>
                 </div>
             );
             
