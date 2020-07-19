@@ -47,9 +47,9 @@ export class Post extends React.Component {
              return (<h2>Loading...</h2>);
          }
             return (
-                <SimpleLink to={`/post/${this.post._id}`}>
                 <div className="outer">
                     <div className="card">
+                    <SimpleLink to={`/post/${this.post._id}`}>
                         <div className="headline">
                             {this.post.activity.name}
                         </div>
@@ -69,10 +69,11 @@ export class Post extends React.Component {
                                 <button className="btn-actions">{this.state.numberOfComments} <img className="n-card-img-comment" src={commentIcon} alt="Comment"></img></button> 
                             </SimpleLink>
                             {this.post.description}</div>              
-                        </div>            
+                        </div>
+                        </SimpleLink>          
                     </div>
                 </div>
-                </SimpleLink>
+                
             );
             
 

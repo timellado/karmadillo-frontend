@@ -65,13 +65,32 @@ export class PostDetailView extends React.Component {
         
     }
 
+    async createCommentLike(comment) {
+        try {
+            let currentUser = UserService.getCurrentUser();
+            if (comment.likes.some(e => e === currentUser.id)) {
+                var index = comment.likes.indexOf(currentUser.id);
+                comment.likes.splice(index, 1);
+            } else {
+                comment.likes.push(currentUser.id);
+            }
+            let like = await CommentService.updateComment(comment);
+            console.log(currentUser);
+            this.props.history.go(0);
+        } catch(err) {
+            console.error(err);
+            this.setState(Object.assign({}, this.state, {error: 'Error while creating comment'}));
+        }
+        
+    }
+
     render() {
         if (this.state.loading) {
             return (<h2>Loading...</h2>);
         }
 
         return (
-            <PostDetail comments={this.state.comments} postCreator={this.state.postCreator} post={this.state.post} onDelete={(id) => this.deletePost(id)} onSubmit={(comment) => this.createComment(comment)}/>
+            <PostDetail comments={this.state.comments} postCreator={this.state.postCreator} post={this.state.post} onDelete={(id) => this.deletePost(id)} onSubmit={(comment) => this.createComment(comment)} onLike={(comment) => this.createCommentLike(comment)}/>
         );
     }
 }

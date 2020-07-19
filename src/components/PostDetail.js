@@ -60,7 +60,7 @@ export class PostDetail extends React.Component {
                     <div className="post-comment-data">
                     <p><b>{this.props.comments[i].commentUser}</b> {moment(this.props.comments[i].createdAt).fromNow()}</p>
                     <p>{this.props.comments[i].text}</p>
-                    <button className="btn-actions-post"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img> {this.props.comments[i].likes.length} likes</button>
+                    <button  onClick={() => this.props.onLike(this.props.comments[i])} className="btn-actions-post"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img> {this.props.comments[i].likes.length} likes</button>
                     <b>Answers</b>
                     </div>
                     </div>)
@@ -104,7 +104,7 @@ export class PostDetail extends React.Component {
                     </div>
                 </Card>
                 <div>
-                    <p>{this.props.post.comments.length} comments</p>
+                    <p>{this.props.comments.length} comments</p>
                 </div>
                 <Grid className="grid-data" >
                 <Cell size={1}><Avatar src="https://picsum.photos/40/40?image=153" /></Cell>
@@ -123,7 +123,6 @@ export class PostDetail extends React.Component {
                     />
                 <Button id="submit" type="submit" raised primary className="md-cell md-cell--2">Save</Button>
                 </form> 
-                <Cell><Button onClick={() => this.props.history.push('/')}></Button></Cell> 
                 </Grid>
                 {postComments}
 
