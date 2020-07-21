@@ -84,7 +84,7 @@ export class Post extends React.Component {
                             
                             <button onClick={() => this.onLike(this.post)} className="btn-actions"><img className="n-card-img-heart" src={likeIcon} alt="Like"></img></button>
                             <SimpleLink to={`/post/${this.post._id}`}>
-                                <button className="btn-actions">{this.state.numberOfComments} <img className="n-card-img-comment" src={commentIcon} alt="Comment"></img></button> 
+                                <button className="btn-actions"><img className="n-card-img-comment" src={commentIcon} alt="Comment"></img></button> 
                             </SimpleLink>
                             {this.post.description}</div>              
                         </div>
